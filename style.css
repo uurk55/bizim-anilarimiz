@@ -1,0 +1,165 @@
+/* Sayfanın tamamına etki edecek temel stiller */
+body {
+    background-color: #FFF8F0; /* Kırık beyaz, yumuşak bir arka plan rengi */
+    font-family: 'Georgia', serif; /* Zarif, tırnaklı bir yazı tipi */
+    color: #4B3832; /* Kahve tonlarında, göz yormayan bir yazı rengi */
+    text-align: center; /* Tüm metinleri sayfanın ortasına hizala */
+    margin: 0;
+    padding: 20px;
+}
+/* Ana bölümlerin (karşılama, hikaye, galeri vb.) daha düzenli görünmesi için */
+header, main, section, footer {
+    max-width: 800px; /* İçeriğin çok genişleyip okunmaz hale gelmesini engeller */
+    margin: 40px auto; /* Bölümlerin arasında boşluk bırakır ve ortalar */
+    padding: 20px;
+    background-color: #FFFFFF; /* Bölümlerin arka planını saf beyaz yapar */
+    border-radius: 10px; /* Köşeleri hafifçe yuvarlatarak daha yumuşak bir görünüm verir */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* İnce bir gölge efekti ekler */
+}
+/* Ana başlık (Canım Sevgilim...) */
+h1 {
+    color: #D96666; /* Romantik bir gül kurusu rengi */
+    font-size: 2.5em; /* Yazıyı biraz büyütelim */
+}
+
+/* Bölüm başlıkları (Bizim Hikayemiz, Anı Kareleri...) */
+h2 {
+    color: #A68080; /* Gül kurusunun biraz daha soft bir tonu */
+    border-bottom: 2px solid #F0EBE3; /* Altına ince, zarif bir çizgi ekler */
+    padding-bottom: 10px; /* Çizgi ile yazı arasına boşluk koyar */
+}
+
+/* Anı başlıkları (İlk Tanışma...) */
+h3 {
+    color: #4B3832; /* Ana metin rengiyle aynı */
+}
+
+/* Normal yazılar */
+p {
+    line-height: 1.6; /* Satır aralığını artırarak okunabilirliği kolaylaştırır */
+    font-size: 1.1em;
+}
+/* Tüm resimlere uygulanacak genel stil */
+img {
+    max-width: 100%; /* Resimlerin kendi kutularından taşmasını engeller */
+    height: auto;
+    border-radius: 8px; /* Resimlerin köşelerini de yuvarlatalım */
+    margin-top: 15px; /* Üstünde biraz boşluk bırakır */
+}
+
+/* "Seni Sevmemin Nedenleri" listesi için özel stil */
+.sevgi-listesi {
+    list-style-type: none; /* Baştaki 1, 2, 3 sayılarını kaldırıyoruz */
+    padding: 0; /* Liste girintisini sıfırlıyoruz */
+    text-align: left; /* Madde metinlerini sola hizalıyoruz */
+}
+
+.sevgi-listesi li {
+    background-color: #FFF8F0; /* Sayfa arka planıyla aynı renk */
+    margin-bottom: 10px; /* Maddeler arasına boşluk */
+    padding: 15px;
+    border-radius: 5px;
+    border-left: 5px solid #D96666; /* Soluna romantik renkte bir şerit ekliyoruz */
+}
+/* Sürpriz Butonu Stili */
+#surprizButonu {
+    background-color: #D96666; /* Ana romantik rengimiz */
+    color: white; /* Yazı rengi beyaz */
+    border: none; /* Kenarlık olmasın */
+    padding: 15px 30px; /* İç boşluklar (dikey ve yatay) */
+    font-size: 1em; /* Yazı boyutu */
+    border-radius: 50px; /* Tamamen yuvarlak kenarlar */
+    cursor: pointer; /* Üzerine gelince el işareti çıksın */
+    transition: background-color 0.3s ease; /* Renk değişim animasyonu */
+    margin-top: 20px; /* Üstündeki paragraftan biraz ayırır */
+}
+
+#surprizButonu:hover {
+    background-color: #c45a5a; /* Üzerine gelince rengi biraz kararsın */
+}
+/* --- Şık Mesaj Kutusu (Modal) Stilleri --- */
+
+/* Arka planı kaplayan karartma katmanı */
+#modal-overlay {
+    position: fixed; /* Sayfayı kaydırsan bile yerinde kalır */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Siyah ama %60 şeffaf */
+    display: none; /* Başlangıçta gizli */
+    justify-content: center; /* İçindeki kutuyu yatayda ortalar */
+    align-items: center; /* İçindeki kutuyu dikeyde ortalar */
+    z-index: 1000; /* Her şeyin üstünde görünmesini sağlar */
+}
+
+/* Mesaj kutusunun kendisi */
+#modal-box {
+    background-color: #FFF8F0; /* Sayfa arka planıyla uyumlu */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    position: relative; /* Kapatma butonunu konumlandırmak için */
+}
+
+#modal-box h2 {
+    color: #D96666; /* Ana başlık rengimizle aynı */
+    margin-top: 0;
+}
+
+/* Kapatma butonu (X) */
+#close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+#close-modal:hover {
+    color: #333;
+}
+
+/* Modal'ı göstermek için kullanacağımız sihirli class */
+#modal-overlay.active {
+    display: flex; /* Gizli olan modal'ı görünür yapar */
+}
+/* --- MOBİL UYUMLULUK (DUYARLILIK) KODLARI --- */
+/* Bu kodlar sadece ekran genişliği 600px veya daha az olduğunda çalışır */
+@media (max-width: 600px) {
+
+    body {
+        padding: 10px; /* Sayfanın genel kenar boşluklarını azaltarak içeriğe yer açarız */
+    }
+
+    header, main, section, footer {
+        margin: 20px auto; /* Bölümler arasındaki dikey boşluğu biraz azaltırız */
+        padding: 15px; /* Bölümlerin iç boşluklarını daraltırız */
+        box-shadow: none; /* Telefonda daha sade bir görünüm için gölgeyi kaldırırız */
+        border-radius: 0; /* Kenar yuvarlaklığını kaldırıp tam ekran hissi veririz */
+    }
+
+    h1 {
+        font-size: 2em; /* "Canım Sevgilim" başlığını telefona sığacak şekilde biraz küçültürüz */
+    }
+
+    p {
+        font-size: 1em; /* Paragraf yazı boyutunu mobil için standart hale getiririz */
+    }
+
+    #surprizButonu {
+        padding: 12px 24px; /* Butonun boyutunu biraz küçülterek daha zarif durmasını sağlarız */
+        font-size: 0.9em;
+    }
+
+    /* "Seni Sevmemin Nedenleri" listesindeki maddelerin sola yapışık durması için */
+    .sevgi-listesi {
+        text-align: left;
+    }
+}
