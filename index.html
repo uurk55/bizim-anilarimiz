@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bizim Anılarımız</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Lightbox2 CSS Dosyası -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
+
 </head>
 <body>
     <!-- 1. BÖLÜM: KARŞILAMA -->
@@ -36,20 +39,38 @@
     </main>
 
     <!-- 3. BÖLÜM: FOTOĞRAF GALERİSİ -->
-    <section>
-        <h2>Anı Kareleri</h2>
-        <img src="images/foto1.jpg" alt="Anı 1" width="150">
-        <img src="images/foto2.jpg" alt="Anı 2" width="150">
-        <img src="images/foto3.jpg" alt="Anı 3" width="150">
-        <img src="images/foto4.jpg" alt="Anı 4" width="150">
-        <img src="images/foto5.jpg" alt="Anı 5" width="150">
-        <img src="images/foto6.jpg" alt="Anı 6" width="150">
-        <img src="images/foto7.jpg" alt="Anı 7" width="150">
-        <img src="images/foto8.jpg" alt="Anı 8" width="150">
-        <img src="images/foto9.jpg" alt="Anı 9" width="150">
+    <section class="galeri-section">
+    <h2>Anı Kareleri</h2>
+    <a href="images/foto1.jpg" data-lightbox="bizim-galerimiz" >
+        <img src="images/foto1.jpg" alt="Anı 1">
+    </a>
+    <a href="images/foto2.jpg" data-lightbox="bizim-galerimiz" >
+        <img src="images/foto2.jpg" alt="Anı 2">
+    </a>
+    <a href="images/foto3.jpg" data-lightbox="bizim-galerimiz" >
+        <img src="images/foto3.jpg" alt="Anı 3">
+    </a>
+    <a href="images/foto4.jpg" data-lightbox="bizim-galerimiz" >
+        <img src="images/foto4.jpg" alt="Anı 4">
+    </a>
+    <a href="images/foto5.jpg" data-lightbox="bizim-galerimiz" >
+        <img src="images/foto5.jpg" alt="Anı 5">
+    </a>
+    <a href="images/foto6.jpg" data-lightbox="bizim-galerimiz" >
+        <img src="images/foto6.jpg" alt="Anı 6">
+    </a>
+    <a href="images/foto7.jpg" data-lightbox="bizim-galerimiz" >
+        <img src="images/foto7.jpg" alt="Anı 7">
+    </a>
+    <a href="images/foto8.jpg" data-lightbox="bizim-galerimiz" >
+        <img src="images/foto8.jpg" alt="Anı 8">
+    </a>
+    <a href="images/foto9.jpg" data-lightbox="bizim-galerimiz" >
+        <img src="images/foto9.jpg" alt="Anı 9">
+    </a>
+    <!-- Diğer tüm fotoğraflar için aynı yapıyı tekrarla -->
+</section>
 
-        <!-- İstediğin kadar <img...> satırını kopyalayıp çoğaltarak fotoğraf ekleyebilirsin -->
-    </section>
 
     <!-- 4. BÖLÜM: SANA ÖZEL NOT -->
     <footer>
@@ -76,5 +97,7 @@
     <!-- ŞIK MESAJ KUTUSU (MODAL) BİTİŞİ -->
 
     <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+
 </body>
 </html>
