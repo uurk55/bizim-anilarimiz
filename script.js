@@ -40,12 +40,24 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 4. Giriş yapma (animasyon ve içeriği gösterme) fonksiyonu
     function girisYap() {
-        sifreKorumaEkrani.style.opacity = '0';
+    const preloader = document.getElementById('preloader');
+
+    // 1. Şifre ekranını yavaşça kaybet
+    sifreKorumaEkrani.style.opacity = '0';
+    setTimeout(() => {
+        sifreKorumaEkrani.style.display = 'none';
+
+        // 2. "Loading" ekranını göster
+        preloader.style.display = 'flex';
+
+        // 3. 1.5 saniye sonra "Loading" ekranını kaldır ve ana içeriği göster
         setTimeout(() => {
-            sifreKorumaEkrani.style.display = 'none';
+            preloader.style.display = 'none';
             anaIcerik.style.display = 'block';
-        }, 500);
-    }
+        }, 1500); // 1.5 saniye bekleme süresi
+
+    }, 500); // 0.5 saniye animasyon süresi
+}
 });
 // --- Sürpriz Butonu ve Şık Mesaj Kutusu (Modal) İşlevi ---
 
@@ -181,3 +193,29 @@ setInterval(geriSayimiGuncelle, 1000);
 
 // Sayfayı ilk açtığında da çalıştır
 geriSayimiGuncelle();
+
+// --- SANA ÖZEL SÖZ KUTUSU MANTIĞI ---
+document.addEventListener('DOMContentLoaded', function() {
+    const sozKutusu = document.getElementById('soz-kutusu');
+    const gununSozuEl = document.getElementById('gunun-sozu');
+
+    const sozler = [
+        "Seninle her şey daha güzel, çünkü sen her şeysin.",
+        "Gülüşün, en sevdiğim mevsim.",
+        "Sen benim en güzel şiirimsin.",
+        "Varlığın, hayatıma verilmiş en büyük hediye.",
+        "Birlikte yaşlanmak istediğim tek insansın.",
+        "Seninle dolu bir kalp, dünyanın en zengin hazinesi.",
+        "Hayat kısa, ama seninle geçen her an sonsuzluk gibi.",
+        "Sen benim pazar sabahımsın."
+    ];
+    
+    // Sayfa ilk yüklendiğinde rastgele bir söz göster
+    gununSozuEl.textContent = sozler[Math.floor(Math.random() * sozler.length)];
+
+    sozKutusu.addEventListener('click', function() {
+        // Her tıklandığında yeni bir rastgele söz göster
+        const rastgeleIndex = Math.floor(Math.random() * sozler.length);
+        gununSozuEl.textContent = sozler[rastgeleIndex];
+    });
+});
