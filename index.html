@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bizim Anılarımız</title>
+    <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
     <!-- Lightbox2 CSS Dosyası -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
-
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
     <!-- 1. BÖLÜM: KARŞILAMA -->
@@ -16,10 +17,11 @@
         <h1>Canım Sevgilim Eda</h1>
         <p>Bu site, bizim anılarımızla dolu küçük dünyamız. Hoş geldin!</p>
         <button id="surprizButonu">Sana Bir Sürprizim Var ❤️</button>
+        <button id="muzikButonu">▶️</button>
     </header>
 
     <!-- 2. BÖLÜM: HİKAYEMİZ ZAMAN TÜNELİ -->
-    <main>
+    <main data-aos="fade-up">
         <h2>Bizim Hikayemiz</h2>
         
         <div class="ani">
@@ -39,41 +41,41 @@
     </main>
 
     <!-- 3. BÖLÜM: FOTOĞRAF GALERİSİ -->
-    <section class="galeri-section">
+    <section class="galeri-section" data-aos="fade-up">
     <h2>Anı Kareleri</h2>
-    <a href="images/foto1.jpg" data-lightbox="bizim-galerimiz" >
-        <img src="images/foto1.jpg" alt="Anı 1">
+    <a href="images/foto1.jpg" data-lightbox="bizim-galerimiz" data-title="Herşeyin başladığı nokta...">
+        <img src="images/foto1.jpg" alt="Anı 1" data-aos="zoom-in" data-aos-delay="100">
     </a>
-    <a href="images/foto2.jpg" data-lightbox="bizim-galerimiz" >
-        <img src="images/foto2.jpg" alt="Anı 2">
+    <a href="images/foto2.jpg" data-lightbox="bizim-galerimiz" data-title="Atatürk Kent Ormanı...">
+        <img src="images/foto2.jpg" alt="Anı 2" data-aos="zoom-in" data-aos-delay="200">
     </a>
-    <a href="images/foto3.jpg" data-lightbox="bizim-galerimiz" >
-        <img src="images/foto3.jpg" alt="Anı 3">
+    <a href="images/foto3.jpg" data-lightbox="bizim-galerimiz" data-title="Biryerlere giderken yine geziyoruz...">
+        <img src="images/foto3.jpg" alt="Anı 3" data-aos="zoom-in" data-aos-delay="300">
     </a>
-    <a href="images/foto4.jpg" data-lightbox="bizim-galerimiz" >
-        <img src="images/foto4.jpg" alt="Anı 4">
+    <a href="images/foto4.jpg" data-lightbox="bizim-galerimiz" data-title="İş çıkışının ardından...">
+        <img src="images/foto4.jpg" alt="Anı 4" data-aos="zoom-in" data-aos-delay="400">
     </a>
-    <a href="images/foto5.jpg" data-lightbox="bizim-galerimiz" >
-        <img src="images/foto5.jpg" alt="Anı 5">
+    <a href="images/foto5.jpg" data-lightbox="bizim-galerimiz" data-title="Kardeşlerinle yemek yediğimiz gün...">
+        <img src="images/foto5.jpg" alt="Anı 5" data-aos="zoom-in" data-aos-delay="500">
     </a>
-    <a href="images/foto6.jpg" data-lightbox="bizim-galerimiz" >
-        <img src="images/foto6.jpg" alt="Anı 6">
+    <a href="images/foto6.jpg" data-lightbox="bizim-galerimiz" data-title="Yılbaşı yaklaşırken...">
+        <img src="images/foto6.jpg" alt="Anı 6" data-aos="zoom-in" data-aos-delay="600">
     </a>
-    <a href="images/foto7.jpg" data-lightbox="bizim-galerimiz" >
-        <img src="images/foto7.jpg" alt="Anı 7">
+    <a href="images/foto7.jpg" data-lightbox="bizim-galerimiz" data-title="Yine günlerden Annenin yemeklerini yerken bilmemkaç">
+        <img src="images/foto7.jpg" alt="Anı 7" data-aos="zoom-in" data-aos-delay="700">
     </a>
-    <a href="images/foto8.jpg" data-lightbox="bizim-galerimiz" >
-        <img src="images/foto8.jpg" alt="Anı 8">
+    <a href="images/foto8.jpg" data-lightbox="bizim-galerimiz" data-title="Düğünde oynarken">
+        <img src="images/foto8.jpg" alt="Anı 8" data-aos="zoom-in" data-aos-delay="800">
     </a>
-    <a href="images/foto9.jpg" data-lightbox="bizim-galerimiz" >
-        <img src="images/foto9.jpg" alt="Anı 9">
+    <a href="images/foto9.jpg" data-lightbox="bizim-galerimiz" data-title="Doğum günün...">
+        <img src="images/foto9.jpg" alt="Anı 9" data-aos="zoom-in" data-aos-delay="900">
     </a>
     <!-- Diğer tüm fotoğraflar için aynı yapıyı tekrarla -->
 </section>
 
 
     <!-- 4. BÖLÜM: SANA ÖZEL NOT -->
-    <footer>
+    <footer data-aos="fade-up">
         <h2>Sana Özel</h2>
         <h3>Seni Sevmemin Bazı Nedenleri:</h3>
         <ol class="sevgi-listesi">
@@ -85,6 +87,30 @@
             <li>Sadece varlığın bile dünyamı daha güzel bir yer yapıyor.</li>
             <!-- Buraya kendi özel nedenlerini ekleyebilirsin. Her yeni neden için <li>...</li> satırını kopyala. -->
         </ol>
+        <!-- GERİ SAYIM SAYACI BAŞLANGICI -->
+        <div class="geri-sayim-container" data-aos="fade-up">
+            <h3>Bir Sonraki Yıl Dönümümüze Kalan Süre:</h3>
+            <div id="geri-sayim" class="geri-sayim">
+                <div>
+                    <span id="gun">00</span>
+                    <small>Gün</small>
+                </div>
+                <div>
+                    <span id="saat">00</span>
+                    <small>Saat</small>
+                </div>
+                <div>
+                    <span id="dakika">00</span>
+                    <small>Dakika</small>
+                </div>
+                <div>
+                    <span id="saniye">00</span>
+                    <small>Saniye</small>
+                </div>
+            </div>
+        </div>
+        <!-- GERİ SAYIM SAYACI BİTİŞİ -->
+
         <p>Sonsuz sevgiyle, <br> Uğur</p>
     </footer>
     <div id="modal-overlay">
@@ -94,10 +120,19 @@
             <p>Seni her şeyden çok seviyorum! ❤️</p>
         </div>
     </div>
+
+    <!-- Gizli Müzik Oynatıcı -->
+     <audio id="bizimSarkimiz" loop>
+          <source src="audio/Still With You.mp3" type="audio/mpeg">
+     </audio>
+
     <!-- ŞIK MESAJ KUTUSU (MODAL) BİTİŞİ -->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script src="script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
 
 </body>
 </html>

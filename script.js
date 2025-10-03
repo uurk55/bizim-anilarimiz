@@ -49,3 +49,69 @@ document.addEventListener('click', function(e) {
         }, 1050);
     }
 });
+
+// --- AOS (Animate On Scroll) Başlatma ---
+AOS.init({
+    duration: 800, // Animasyonun ne kadar süreceği (milisaniye)
+    once: true     // Animasyonun sadece bir kere çalışmasını sağlar
+});
+// --- Özel Müzik Oynatıcı Kontrolü ---
+const muzikButonu = document.getElementById('muzikButonu');
+const sarki = document.getElementById('bizimSarkimiz');
+let muzikCaliyor = false;
+
+muzikButonu.addEventListener('click', function() {
+    if (muzikCaliyor) {
+      sarki.pause();
+      muzikButonu.innerHTML = '▶️'; // Sadece oynat ikonu
+      muzikCaliyor = false;
+    } else {
+      sarki.play();
+      muzikButonu.innerHTML = '⏸️'; // Sadece durdur ikonu
+      muzikCaliyor = true;
+}
+});
+// --- Geri Sayım Sayacı Mantığı ---
+const gunEl = document.getElementById('gun');
+const saatEl = document.getElementById('saat');
+const dakikaEl = document.getElementById('dakika');
+const saniyeEl = document.getElementById('saniye');
+
+// Tanışma tarihinizi buraya girin (Ay ve Gün)
+const tanismaAyi = 1; // 1 = Ocak
+const tanismaGunu = 10; // 10. gün
+
+function geriSayimiGuncelle() {
+    const simdi = new Date();
+    let yilDonumuYili = simdi.getFullYear();
+    let yilDonumuTarihi = new Date(yilDonumuYili, tanismaAyi - 1, tanismaGunu);
+
+    // Eğer bu seneki yıl dönümü geçtiyse, gelecek senekini hedefle
+    if (simdi > yilDonumuTarihi) {
+        yilDonumuYili++;
+        yilDonumuTarihi = new Date(yilDonumuYili, tanismaAyi - 1, tanismaGunu);
+    }
+
+    const toplamSaniye = (yilDonumuTarihi - simdi) / 1000;
+
+    const gun = Math.floor(toplamSaniye / 3600 / 24);
+    const saat = Math.floor(toplamSaniye / 3600) % 24;
+    const dakika = Math.floor(toplamSaniye / 60) % 60;
+    const saniye = Math.floor(toplamSaniye) % 60;
+
+    gunEl.innerHTML = formatla(gun);
+    saatEl.innerHTML = formatla(saat);
+    dakikaEl.innerHTML = formatla(dakika);
+    saniyeEl.innerHTML = formatla(saniye);
+}
+
+// Tek haneli sayıların başına '0' eklemek için
+function formatla(zaman) {
+    return zaman < 10 ? `0${zaman}` : zaman;
+}
+
+// Sayacı her saniye güncelle
+setInterval(geriSayimiGuncelle, 1000);
+
+// Sayfayı ilk açtığında da çalıştır
+geriSayimiGuncelle();

@@ -182,3 +182,82 @@ img {
     object-fit: cover; /* Resimlerin orantısını bozmadan kutuya sığdır */
     vertical-align: middle; /* Resimleri dikeyde hizala */
 }
+/* --- LIGHTBOX DÜZELTMELERİ --- */
+
+/* Kapatma butonunu sağ üste konumlandırmak için */
+.lb-data .lb-close {
+    position: fixed; /* Ekrana göre sabitlenir */
+    top: 20px;       /* Ekranın üstünden 20px aşağıda */
+    right: 20px;     /* Ekranın sağından 20px içeride */
+    opacity: 0.8;    /* Hafif şeffaf yapalım */
+    transition: opacity 0.2s;
+}
+
+/* Üzerine gelince daha belirgin olsun */
+.lb-data .lb-close:hover {
+    opacity: 1;
+}
+/* --- Sağ Alta Sabitlenmiş Müzik Butonu --- */
+#muzikButonu {
+    position: fixed;   /* Sayfayı kaydırsan bile yerinde kalır */
+    bottom: 20px;      /* Sayfanın altından 20px yukarıda */
+    right: 20px;       /* Sayfanın sağından 20px içeride */
+    width: 60px;       /* Genişlik */
+    height: 60px;      /* Yükseklik */
+    border-radius: 50%; /* Tamamen yuvarlak yapar */
+    border: none;
+    background-color: #D96666; /* Ana kırmızı tonumuz */
+    color: white;
+    font-size: 24px;   /* İkonun boyutunu büyütür */
+    cursor: pointer;
+    display: flex;     /* İkonu tam ortalamak için */
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Daha belirgin bir gölge */
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    z-index: 999;      /* Diğer elemanların üstünde kalmasını sağlar */
+}
+
+#muzikButonu:hover {
+    background-color: #c45a5a; /* Üzerine gelince renk değişsin */
+    transform: scale(1.1);   /* Üzerine gelince hafifçe büyüsün */
+}
+/* --- Geri Sayım Sayacı Stilleri --- */
+.geri-sayim-container {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #F0EBE3; /* Üstüne ayırıcı bir çizgi */
+}
+
+.geri-sayim-container h3 {
+    margin-bottom: 20px;
+    color: #4B3832;
+    font-size: 1.2em;
+}
+
+.geri-sayim {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Kutular arasına boşluk */
+    text-align: center;
+}
+
+.geri-sayim div {
+    background-color: #FFF8F0;
+    padding: 10px 20px;
+    border-radius: 5px;
+    min-width: 80px;
+}
+
+.geri-sayim span {
+    display: block;
+    font-size: 2.5em; /* Rakamların boyutu */
+    font-weight: bold;
+    color: #D96666; /* Ana kırmızı tonumuz */
+}
+
+.geri-sayim small {
+    color: #A68080;
+    font-size: 0.9em;
+}
