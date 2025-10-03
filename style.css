@@ -237,11 +237,12 @@ img {
     margin-top: 40px;
     margin-bottom: 20px;
     padding-top: 20px;
-    border-top: 1px solid #F0EBE3; /* Üstüne ayırıcı bir çizgi */
+    
 }
 
 .geri-sayim-container h3 {
-    margin-bottom: 20px;
+    margin: 0 0 20px 0 !important; /* Üst:0, Sağ:0, Alt:20px, Sol:0 */
+    padding-top: 10px; /* Başlığa içten biraz boşluk verelim ki kenara yapışmasın */
     color: #4B3832;
     font-size: 1.2em;
 }
@@ -443,14 +444,12 @@ img {
 }
 /* --- Geliştirilmiş İmza Stili --- */
 .imza {
-    font-family: 'Dancing Script', cursive;
-    font-size: 2em;
-    color: #4B3232;
-    margin-top: 50px;
-    padding: 20px 0; /* Üst ve alt boşluk */
-    line-height: 1.5;
-    position: relative; /* Çizgileri konumlandırmak için */
-}
+     font-family: 'Dancing Script', cursive;
+     font-size: 2.5em;
+     color: white; /* Beyaz renk arka plan üzerinde harika duracak */
+     line-height: 1.5;
+     /* Eski position ve before/after'ları kaldırıyoruz */
+ }
 /* İmzanın üstüne çizgi ekleme */
 .imza::before {
     content: '';
@@ -473,6 +472,14 @@ img {
     height: 1px;
     background-color: #e0d9d4;
 }
+.imza-container {
+     max-width: 100%; /* Sayfanın tamamını kaplasın */
+     margin: 60px 0 0 0; /* Üstten boşluk, alttan sıfır */
+     padding: 60px 20px;
+     background-color: #A68080; /* Soft, romantik bir arka plan rengi */
+     text-align: center;
+     position: relative;
+ }
 /* --- Müzik Butonu Ses Dalgası Animasyonu --- */
 @keyframes sesDalgasi {
     0% {
@@ -590,3 +597,47 @@ img {
 .soz-kutusu:hover {
     transform: scale(1.02);
 }
+/* --- Yeni Bölüm Stilleri --- */
+
+/* "Geleceğimiz" bölümü için genel kart stili */
+.gelecek-bolumu {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 10px 20px 20px; /* ✅ ÜST BOŞLUK 10px'e DÜŞTÜ */
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+/* "Sana Özel" bölümündeki alt bölümlerin üst çizgisini kaldıralım, çünkü artık tek başına değiller */
+.gelecek-bolumu .ozel-bolum {
+    border-top: none;
+    padding-top: 0;
+}
+
+.gelecek-bolumu h2 {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+/* İmza bölümünü ortalayalım ve arka planı olmasın */
+.imza-container {
+    max-width: 900px;
+    margin: 40px auto;
+    text-align: center;
+}
+/* --- Ortak Hayallerimiz Listesi Stili --- */
+ .hayal-listesi {
+     list-style-type: none; /* Baştaki emojiyi kullanacağımız için varsayılanı kaldır */
+     padding: 0;
+     display: inline-block; /* Ortalamak için inline-block yapıyoruz */
+     text-align: left;      /* Liste içeriği sola dayalı kalsın */
+     margin-top: 20px;
+ }
+
+ .hayal-listesi li {
+     padding: 8px 0;
+     font-size: 1.2em;
+     color: #4B3832;
+ }
