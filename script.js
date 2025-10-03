@@ -117,7 +117,6 @@ function geriSayimiGuncelle() {
     let yilDonumuYili = simdi.getFullYear();
     let yilDonumuTarihi = new Date(yilDonumuYili, tanismaAyi - 1, tanismaGunu);
 
-    // Eğer bu seneki yıl dönümü geçtiyse, gelecek senekini hedefle
     if (simdi > yilDonumuTarihi) {
         yilDonumuYili++;
         yilDonumuTarihi = new Date(yilDonumuYili, tanismaAyi - 1, tanismaGunu);
@@ -125,15 +124,24 @@ function geriSayimiGuncelle() {
 
     const toplamSaniye = (yilDonumuTarihi - simdi) / 1000;
 
-    const gun = Math.floor(toplamSaniye / 3600 / 24);
-    const saat = Math.floor(toplamSaniye / 3600) % 24;
-    const dakika = Math.floor(toplamSaniye / 60) % 60;
-    const saniye = Math.floor(toplamSaniye) % 60;
+    // ✅ YENİ EKLENEN KOŞUL
+    if (toplamSaniye <= 0) {
+        // Geri sayım bittiyse (veya yıl dönümü günüyse)
+        document.getElementById('geri-sayim').style.display = 'none'; // Sayacı gizle
+        document.querySelector('.geri-sayim-container h3').style.display = 'none'; // Başlığı gizle
+        document.getElementById('kutlama-mesaji').style.display = 'block'; // Kutlama mesajını göster
+    } else {
+        // Geri sayım devam ediyorsa
+        const gun = Math.floor(toplamSaniye / 3600 / 24);
+        const saat = Math.floor(toplamSaniye / 3600) % 24;
+        const dakika = Math.floor(toplamSaniye / 60) % 60;
+        const saniye = Math.floor(toplamSaniye) % 60;
 
-    gunEl.innerHTML = formatla(gun);
-    saatEl.innerHTML = formatla(saat);
-    dakikaEl.innerHTML = formatla(dakika);
-    saniyeEl.innerHTML = formatla(saniye);
+        gunEl.innerHTML = formatla(gun);
+        saatEl.innerHTML = formatla(saat);
+        dakikaEl.innerHTML = formatla(dakika);
+        saniyeEl.innerHTML = formatla(saniye);
+    }
 }
 
 // Tek haneli sayıların başına '0' eklemek için

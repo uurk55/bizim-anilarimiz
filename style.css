@@ -9,7 +9,7 @@ body {
 }
 /* Ana bölümlerin (karşılama, hikaye, galeri vb.) daha düzenli görünmesi için */
 header, main, section, footer {
-    max-width: 800px; /* İçeriğin çok genişleyip okunmaz hale gelmesini engeller */
+    max-width: 900px; /* İçeriğin çok genişleyip okunmaz hale gelmesini engeller */
     margin: 40px auto; /* Bölümlerin arasında boşluk bırakır ve ortalar */
     padding: 20px;
     background-color: #FFFFFF; /* Bölümlerin arka planını saf beyaz yapar */
@@ -58,8 +58,18 @@ img {
     background-color: #FFF8F0; /* Sayfa arka planıyla aynı renk */
     margin-bottom: 10px; /* Maddeler arasına boşluk */
     padding: 15px;
+    padding-left: 40px; /* Kalp ikonu için solda yer açıyoruz */
     border-radius: 5px;
-    border-left: 5px solid #D96666; /* Soluna romantik renkte bir şerit ekliyoruz */
+    position: relative; /* :before elemanını konumlandırmak için gerekli */
+}
+/* Her liste elemanının başına kalp ikonu ekliyoruz */
+.sevgi-listesi li::before {
+    content: '❤️'; /* Gösterilecek içerik (kalp emojisi) */
+    position: absolute; /* Ana elemana göre konumlandır */
+    left: 15px;       /* Sol kenardan 15px içeride */
+    top: 50%;         /* Dikey olarak ortalamak için */
+    transform: translateY(-50%); /* Dikey hizalamayı tamamla */
+    font-size: 1.2em; /* Kalbin boyutunu ayarla */
 }
 /* Sürpriz Butonu Stili */
 #surprizButonu {
@@ -331,4 +341,101 @@ img {
     color: #888; /* Hafif silik bir gri renk */
     margin-top: -10px; /* Üstündeki paragrafa biraz daha yaklaştırır */
     margin-bottom: 15px;
+}
+/* --- GÖRSEL ZAMAN TÜNELİ STİLLERİ --- */
+.zaman-tuneli {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.zaman-tuneli h2 {
+    text-align: center;
+    color: #A68080;
+    border-bottom: 2px solid #F0EBE3;
+    padding-bottom: 10px;
+    margin-bottom: 40px;
+}
+
+.ani-blogu {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    gap: 30px; /* Resim ve içerik arasına boşluk */
+}
+
+.ani-blogu.ters {
+    flex-direction: row-reverse; /* Resim ve içeriğin yerini değiştirir */
+}
+
+.ani-resim {
+    flex: 0.8; /* Esnek genişlik */
+    min-width: 250px;
+}
+
+.ani-resim img {
+    width: 100%;
+    height: 300px; /* ✅ FOTOĞRAFLARA SABİT BİR YÜKSEKLİK VERİYORUZ */
+    object-fit: cover; /* ✅ SİHİRLİ DOKUNUŞ: Oranı bozmadan kutuyu kapla */
+    object-position: center; /* Resmin merkezini odakla (özellikle dikey fotoğraflar için) */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+.ani-resim img:hover {
+    transform: scale(1.05);
+}
+
+.ani-icerik {
+    flex: 1.7; /* Yazı alanını resimden biraz daha geniş yapar */
+    text-align: left;
+}
+
+.ani-icerik h3 {
+    color: #D96666;
+    margin-top: 0;
+}
+
+/* Mobil Uyum Düzeltmesi */
+@media (max-width: 768px) {
+    .ani-blogu, .ani-blogu.ters {
+        flex-direction: column; /* Mobilde her şeyi alt alta diz */
+        text-align: center;
+    }
+    .ani-icerik {
+        text-align: center;
+    }
+    .ani-resim {
+        min-width: auto;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+/* --- Yıl Dönümü Kutlama Mesajı Stili --- */
+#kutlama-mesaji h2 {
+    color: #D96666;
+    font-size: 2em;
+    animation: bounce 1.5s infinite; /* Zıplama animasyonu */
+}
+
+#kutlama-mesaji p {
+    font-size: 1.2em;
+    color: #4B3832;
+}
+
+/* Zıplama animasyonu için keyframes */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
 }
