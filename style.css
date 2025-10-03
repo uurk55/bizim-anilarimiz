@@ -364,7 +364,8 @@ img {
     display: flex;
     align-items: center;
     margin-bottom: 50px;
-    gap: 30px; /* Resim ve içerik arasına boşluk */
+    gap: 30px;
+    padding: 20px; /* ✅ YANLARA VE ÜST/ALTA BOŞLUK EKLENDİ */
 }
 
 .ani-blogu.ters {
@@ -372,13 +373,13 @@ img {
 }
 
 .ani-resim {
-    flex: 0.8; /* Esnek genişlik */
-    min-width: 250px;
+    flex: 0.7; /* ✅ 0.8'den 0.7'ye düşürdük */
+    min-width: 220px; /* ✅ Minimum genişliği de biraz daha azalttık */
 }
 
 .ani-resim img {
     width: 100%;
-    height: 300px; /* ✅ FOTOĞRAFLARA SABİT BİR YÜKSEKLİK VERİYORUZ */
+    height: 200px; /* ✅ FOTOĞRAFLARA SABİT BİR YÜKSEKLİK VERİYORUZ */
     object-fit: cover; /* ✅ SİHİRLİ DOKUNUŞ: Oranı bozmadan kutuyu kapla */
     object-position: center; /* Resmin merkezini odakla (özellikle dikey fotoğraflar için) */
     border-radius: 8px;
@@ -391,7 +392,7 @@ img {
 }
 
 .ani-icerik {
-    flex: 1.7; /* Yazı alanını resimden biraz daha geniş yapar */
+    flex: 2; /* ✅ Yazı alanını 1.7'den 1.8'e çıkardık */
     text-align: left;
 }
 
@@ -405,6 +406,7 @@ img {
     .ani-blogu, .ani-blogu.ters {
         flex-direction: column; /* Mobilde her şeyi alt alta diz */
         text-align: center;
+        padding: 0;
     }
     .ani-icerik {
         text-align: center;
@@ -438,4 +440,52 @@ img {
     60% {
         transform: translateY(-10px);
     }
+}
+/* --- Geliştirilmiş İmza Stili --- */
+.imza {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2em;
+    color: #4B3232;
+    margin-top: 50px;
+    padding: 20px 0; /* Üst ve alt boşluk */
+    line-height: 1.5;
+    position: relative; /* Çizgileri konumlandırmak için */
+}
+/* İmzanın üstüne çizgi ekleme */
+.imza::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 1px;
+    background-color: #e0d9d4;
+}
+/* İmzanın altına çizgi ekleme */
+.imza::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 1px;
+    background-color: #e0d9d4;
+}
+/* --- Müzik Butonu Ses Dalgası Animasyonu --- */
+@keyframes sesDalgasi {
+    0% {
+        box-shadow: 0 0 0 0 rgba(217, 102, 102, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 20px rgba(217, 102, 102, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(217, 102, 102, 0);
+    }
+}
+/* Animasyonun uygulanacağı class */
+#muzikButonu.caliyor {
+    animation: sesDalgasi 2s infinite;
 }

@@ -89,17 +89,26 @@ AOS.init({
 // --- Özel Müzik Oynatıcı Kontrolü ---
 const muzikButonu = document.getElementById('muzikButonu');
 const sarki = document.getElementById('bizimSarkimiz');
-let muzikCaliyor = false;
+muzikButonu.addEventListener('click', function() {
+    // sarki.paused, müziğin durup durmadığını kontrol eden yerleşik bir özelliktir
+    if (sarki.paused) {
+        sarki.play();
+        muzikButonu.classList.add('caliyor'); // Animasyonu başlat
+    } else {
+        sarki.pause();
+        muzikButonu.classList.remove('caliyor'); // Animasyonu durdur
+    }
+});
 
 muzikButonu.addEventListener('click', function() {
     if (muzikCaliyor) {
-      sarki.pause();
-      muzikButonu.innerHTML = '▶️'; // Sadece oynat ikonu
-      muzikCaliyor = false;
+       sarki.pause();
+    // Artık ikonu değiştirmiyoruz, animasyonu durduracağız (bir sonraki adımda)
+       muzikCaliyor = false;
     } else {
-      sarki.play();
-      muzikButonu.innerHTML = '⏸️'; // Sadece durdur ikonu
-      muzikCaliyor = true;
+    sarki.play();
+    // Artık ikonu değiştirmiyoruz, animasyonu başlatacağız (bir sonraki adımda)
+       muzikCaliyor = true;
 }
 });
 // --- Geri Sayım Sayacı Mantığı ---
