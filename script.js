@@ -1,12 +1,20 @@
-// --- TAM SAYFA ŞİFRE KORUMASI ---
+// --- TAM SAYFA ŞİFRE KORUMASI ("BENİ HATIRLA" ÖZELLİKLİ) ---
 document.addEventListener('DOMContentLoaded', function() {
-    const dogruSifre = '10012023'; // ✅ BURAYA KENDİ ŞİFRENİ YAZ!
+    const dogruSifre = '10012023'; // ✅ KENDİ ŞİFRENİ YAZ!
     const sifreKorumaEkrani = document.getElementById('sifre-koruma');
     const anaIcerik = document.getElementById('ana-icerik');
     const sifreInput = document.getElementById('sifre-input');
     const sifreButon = document.getElementById('sifre-buton');
     const hataMesaji = document.getElementById('hata-mesaji');
+    const beniHatirlaCheckbox = document.getElementById('beni-hatirla');
 
+    // 1. Sayfa yüklendiğinde "Beni Hatırla"yı kontrol et
+    const hatirlananGiris = localStorage.getItem('siteyeGirisYapildi');
+    if (hatirlananGiris === 'true') {
+        girisYap();
+    }
+
+    // 2. Buton ve Enter tuşu olayları
     sifreButon.addEventListener('click', sifreyiKontrolEt);
     sifreInput.addEventListener('keypress', function(event) {
         if (event.key === 'Enter') {
@@ -14,19 +22,29 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // 3. Şifreyi kontrol etme fonksiyonu
     function sifreyiKontrolEt() {
         if (sifreInput.value === dogruSifre) {
-            // Şifre doğruysa
-            sifreKorumaEkrani.style.opacity = '0';
-            setTimeout(() => {
-                sifreKorumaEkrani.style.display = 'none';
-                anaIcerik.style.display = 'block';
-            }, 500); // 0.5 saniye sonra ekranı kaldır
+            // Şifre doğruysa...
+            if (beniHatirlaCheckbox.checked) {
+                // "Beni Hatırla" işaretliyse, bilgiyi kaydet
+                localStorage.setItem('siteyeGirisYapildi', 'true');
+            }
+            girisYap();
         } else {
             // Şifre yanlışsa
             hataMesaji.style.display = 'block';
-            sifreInput.value = ''; // Giriş kutusunu temizle
+            sifreInput.value = '';
         }
+    }
+    
+    // 4. Giriş yapma (animasyon ve içeriği gösterme) fonksiyonu
+    function girisYap() {
+        sifreKorumaEkrani.style.opacity = '0';
+        setTimeout(() => {
+            sifreKorumaEkrani.style.display = 'none';
+            anaIcerik.style.display = 'block';
+        }, 500);
     }
 });
 // --- Sürpriz Butonu ve Şık Mesaj Kutusu (Modal) İşlevi ---

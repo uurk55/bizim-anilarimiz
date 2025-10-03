@@ -489,3 +489,16 @@ img {
 #muzikButonu.caliyor {
     animation: sesDalgasi 2s infinite;
 }
+/* --- Beni Hatırla Stili --- */
+.beni-hatirla-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 0.9em;
+    color: #555;
+}
+.beni-hatirla-container label {
+    margin-left: 8px;
+    cursor: pointer;
+}
