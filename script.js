@@ -1,3 +1,34 @@
+// --- TAM SAYFA ŞİFRE KORUMASI ---
+document.addEventListener('DOMContentLoaded', function() {
+    const dogruSifre = '10012023'; // ✅ BURAYA KENDİ ŞİFRENİ YAZ!
+    const sifreKorumaEkrani = document.getElementById('sifre-koruma');
+    const anaIcerik = document.getElementById('ana-icerik');
+    const sifreInput = document.getElementById('sifre-input');
+    const sifreButon = document.getElementById('sifre-buton');
+    const hataMesaji = document.getElementById('hata-mesaji');
+
+    sifreButon.addEventListener('click', sifreyiKontrolEt);
+    sifreInput.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            sifreyiKontrolEt();
+        }
+    });
+
+    function sifreyiKontrolEt() {
+        if (sifreInput.value === dogruSifre) {
+            // Şifre doğruysa
+            sifreKorumaEkrani.style.opacity = '0';
+            setTimeout(() => {
+                sifreKorumaEkrani.style.display = 'none';
+                anaIcerik.style.display = 'block';
+            }, 500); // 0.5 saniye sonra ekranı kaldır
+        } else {
+            // Şifre yanlışsa
+            hataMesaji.style.display = 'block';
+            sifreInput.value = ''; // Giriş kutusunu temizle
+        }
+    }
+});
 // --- Sürpriz Butonu ve Şık Mesaj Kutusu (Modal) İşlevi ---
 
 // 1. HTML'deki elemanları bul ve değişkenlere ata.

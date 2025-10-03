@@ -11,6 +11,22 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+    <!-- ŞİFRE KORUMA EKRANI BAŞLANGICI -->
+    <div id="sifre-koruma" class="sifre-koruma-aktif">
+        <div class="sifre-kutusu">
+            <h2>Bu Özel Sayfaya Hoş Geldin</h2>
+            <p>Lütfen devam etmek için sihirli kelimeyi gir.</p>
+            <p class="ipucu"><em>İpucu: Tanışma tarihimiz (GG.AA.YYYY formatında, noktasız)</em></p>
+            <input type="password" id="sifre-input" placeholder="Şifre...">
+            <button id="sifre-buton">Giriş Yap</button>
+            <p id="hata-mesaji" class="hata-mesaji-gizli">Yanlış şifre, tekrar dene!</p>
+        </div>
+    </div>
+    <!-- ŞİFRE KORUMA EKRANI BİTİŞİ -->
+
+    <!-- TÜM SAYFA İÇERİĞİ BAŞLANGICI (Yeni eklenen div) -->
+    <div id="ana-icerik" class="icerik-gizli">
+
     <!-- 1. BÖLÜM: KARŞILAMA -->
     <header>
         <img src="images/en-guzel-fotografimiz.jpg" alt="Bizim Fotoğrafımız" width="200">
