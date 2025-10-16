@@ -207,15 +207,250 @@ document.addEventListener('DOMContentLoaded', function() {
         "Birlikte yaşlanmak istediğim tek insansın.",
         "Seninle dolu bir kalp, dünyanın en zengin hazinesi.",
         "Hayat kısa, ama seninle geçen her an sonsuzluk gibi.",
-        "Sen benim pazar sabahımsın."
+        "Sen benim pazar sabahımsın.",
+        "Aşk, seninle anlam buluyor.",
+        "Seninle her an, yeni bir macera.",
+        "Seninle hayat, bir masal gibi.",
+        "Hayatıma girdiğin an, bütün şarkılar anlam kazandı.",
+        "Gülüşün, en karanlık günümü bile aydınlatan güneş gibi.",
+        "Sen benim en güzel \"iyi ki\"msin.",
+        "Bazen durup düşünüyorum da, senden önce gerçekten yaşıyor muydum?",
+        "Sen benim pusulamsın, ne zaman kaybolsam yolumu sende buluyorum.",
+        "Sesini duymak, günümün en güzel melodisi.",
+        "Birlikte keşfedeceğimiz ne kadar çok yer, biriktireceğimiz ne kadar çok anı var...",
+        "Ve en önemlisi: Seni her şeyden çok seviyorum."
     ];
     
-    // Sayfa ilk yüklendiğinde rastgele bir söz göster
-    gununSozuEl.textContent = sozler[Math.floor(Math.random() * sozler.length)];
+    let suankiSozIndex = -1; // Başlangıçta -1 yapıyoruz ki ilk tıklamada 0 olsun
+    let yaziYaziliyor = false; // Aynı anda birden fazla tıklamayı engellemek için
 
-    sozKutusu.addEventListener('click', function() {
-        // Her tıklandığında yeni bir rastgele söz göster
-        const rastgeleIndex = Math.floor(Math.random() * sozler.length);
-        gununSozuEl.textContent = sozler[rastgeleIndex];
+    // Yazı yazma fonksiyonu
+    function yaziYaz(soz, element) {
+        yaziYaziliyor = true;
+        let harfIndex = 0;
+        element.textContent = ''; // Metni temizle
+
+        const interval = setInterval(function() {
+            if (harfIndex < soz.length) {
+                element.textContent += soz.charAt(harfIndex);
+                harfIndex++;
+            } else {
+                clearInterval(interval);
+                yaziYaziliyor = false;
+            }
+        }, 50); // Her harf arasındaki süre (ms)
+    }
+
+    // Bir sonraki sözü gösteren fonksiyon
+    function sonrakiSozuGoster() {
+        if (yaziYaziliyor) return; // Eğer hala yazı yazılıyorsa, fonksiyonu çalıştırma
+
+        suankiSozIndex++;
+        if (suankiSozIndex >= sozler.length) {
+            suankiSozIndex = 0;
+        }
+        yaziYaz(sozler[suankiSozIndex], gununSozuEl);
+    }
+
+    // Sayfa ilk yüklendiğinde ilk sözü yazdır
+    sonrakiSozuGoster();
+
+    // Kutuya tıklandığında bir sonraki sözü yazdır
+    sozKutusu.addEventListener('click', sonrakiSozuGoster);
+});
+// --- İLİŞKİ TESTİ OYUNU MANTIĞI ---
+document.addEventListener('DOMContentLoaded', function() {
+    const testiBitirBtn = document.getElementById('testi-bitir-btn');
+    const testAlani = document.getElementById('iliski-testi');
+    
+    // ✅ BURAYA DOĞRU CEVAPLARI KÜÇÜK HARFLE YAZ!
+    const dogruCevaplar = [
+        "lacivert",
+        "spiderman",
+        ["araba ve kolonya", "araba, kolonya", "kolonya ve araba", "kolonya", "araba", "oyuncak araba", "oyuncak araba ve kolonya", "kolonya ve oyuncak araba", "kolonya, araba", "kolonya, oyuncak araba", "oyuncak araba, kolonya"], // Birden fazla doğru cevap için dizi kullanıyoruz
+        "gezmek",
+        "zeytinburnu sahil",    
+        "soda",
+        "kış",
+        ["starbucks, kahve", "kahve, starbucks", "starbucks kahve", "kahve starbucks", "kahve ve starbucks", "starbucks ve kahve"], // Birden fazla doğru cevap için dizi kullanıyoruz
+        "bateri",
+        ["sahil kenarı", "sahil", "deniz kenarı", "deniz", "sahil kasabası", "sahil kasabası kenarı"], // Birden fazla doğru cevap için dizi kullanıyoruz
+    ];
+
+    testiBitirBtn.addEventListener('click', function() {
+        const cevapInputlari = testAlani.querySelectorAll('input[type="text"]');
+        let dogruSayisi = 0;
+
+        cevapInputlari.forEach((input, index) => {
+            // Cevabı küçük harfe çevir ve boşlukları temizle
+            const kullaniciCevabi = input.value.toLowerCase().trim();
+const beklenenCevap = dogruCevaplar[index];
+let cevapDogruMu = false;
+
+if (Array.isArray(beklenenCevap)) {
+    // Eğer beklenen cevap bir dizi ise (yani birden fazla seçenek varsa)
+    if (beklenenCevap.includes(kullaniciCevabi)) {
+        cevapDogruMu = true;
+    }
+} else {
+    // Eğer beklenen cevap normal bir string ise
+    if (kullaniciCevabi === beklenenCevap) {
+        cevapDogruMu = true;
+    }
+}
+
+if (cevapDogruMu) {
+    dogruSayisi++;
+    input.style.border = '2px solid #4CAF50'; // Doğruysa yeşil çerçeve
+} else {
+    input.style.border = '2px solid #F44336'; // Yanlışsa kırmızı çerçeve
+}
+        });
+
+        // ...
+const sonucMesaji = document.getElementById('test-sonucu');
+if (dogruSayisi === dogruCevaplar.length) {
+    // Durum 1: Hepsi doğruysa
+    sonucMesaji.innerHTML = `🎉 Harika! ${dogruSayisi}/${dogruSayisi} doğru! Beni gerçekten de mükemmel tanıyorsun! ❤️`;
+    sonucMesaji.style.color = '#4CAF50';
+} else if (dogruSayisi === 0) {
+    // ✅ Durum 2: Hiç doğru yoksa
+    sonucMesaji.innerHTML = `😱 Hiç doğru cevap yok! Sanırım acil bir toplantı yapmamız gerekiyor... Yine de seni seviyorum! 😂`;
+    sonucMesaji.style.color = '#F44336'; // Kırmızı renk
+} else {
+    // Durum 3: Arada bir puan aldıysa
+    sonucMesaji.innerHTML = `Eh, fena değil! ${dogruSayisi}/${dogruCevaplar.length} doğru. Sanırım bazı şeyleri tekrar konuşmalıyız 😉`;
+    sonucMesaji.style.color = '#D96666';
+}
+sonucMesaji.style.display = 'block';
+    });
+});
+// --- BİZİM HARİTAMIZ MANTIĞI (GÜNCELLENMİŞ) ---
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Harita 'div'ini ve onu içeren bölümü seç
+    const haritaDiv = document.getElementById('bizim-haritamiz');
+    const haritaBolumu = document.querySelector('.harita-bolumu');
+
+    // Haritayı başlangıçta 'null' olarak tanımla
+    let harita = null;
+    let haritaOlusturuldu = false;
+
+    // Haritayı oluşturan fonksiyon
+    function haritayiOlustur() {
+        if (haritaOlusturuldu) return; // Eğer zaten oluşturulduysa, tekrar oluşturma
+
+        harita = L.map('bizim-haritamiz').setView([41.045, 28.976], 10);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(harita);
+
+        const yerler = [
+        { koordinat: [41.041517844321405, 28.895504480726444], baslik: "Otogar", aciklama: "Hikayemizin başladığı o yer..." },
+        { koordinat: [40.99530053907266, 28.902649359199717], baslik: "Köfteci Yusuf", aciklama: "İlk yemek yediğimiz yer..." },
+        { koordinat: [40.98620924854159, 28.912177294216583], baslik: "Zeytinburnu Sahil", aciklama: "İlk öptüğüm yer..." },
+        { koordinat: [40.99077257487383, 29.02926792162343], baslik: "Boğa Heykeli", aciklama: "Kadıköy'de gezdiğimiz günlerden bir gün..." },
+        { koordinat: [40.98798341189912, 29.036577757136907], baslik: "Fenerbahçe Stadyumu", aciklama: "Fenerbahçe stadyumuna gidip gördüğümüz zamanlar..." },
+        { koordinat: [40.991831439014646, 29.022326045277158], baslik: "Kadıköy İskele", aciklama: "Kadıköy'de buraya gelip canlı müzik dinlediğimiz zamanlar..." },
+        { koordinat: [41.026235560965766, 29.01252440058403], baslik: "Üsküdar Big Mamma's", aciklama: "Ramazanda dışarıda yediğimiz ilk iftar..." },
+        { koordinat: [41.03080074928693, 29.030318534687844], baslik: "Fethipaşa Korusu", aciklama: "Kahvaltıya gittiğimiz zaman..." },
+        { koordinat: [41.03779304981847, 29.039287841366082], baslik: "Nakkaştepe Millet Bahçesi", aciklama: "Üsküdar'ı gezdiğimiz zamanlardan..." },
+        { koordinat: [41.025864114165856, 29.013357522351715], baslik: "Üsküdar Meydan", aciklama: "Sabah kahvaltı yaptığımız zamanı hatırlıyor musun sahilde ve gül satmaya çalışan ablayı :)" },
+        { koordinat: [41.04943335003772, 29.016002143589798], baslik: "Yıldız Parkı", aciklama: "Peki o Yıldız Parkının içinde gezip yorulduğumuz gün..." },
+        { koordinat: [41.047593362308376, 29.025804828869934], baslik: "Ortaköy Meydan", aciklama: "Ortaköy'de kumpir yediğimiz zaman..." },
+        { koordinat: [41.04258186163836, 29.007096725851085], baslik: "Beşiktaş Meydan", aciklama: "Yıldız'dan buraya indiğimiz ya da tam tersi Yıldız'a çıktığımız zamanlar..." },
+        { koordinat: [41.02559162686179, 28.97394264958766], baslik: "Galata Kulesi", aciklama: "Sizinkilere yakalanma korkusuyla gittiğimiz zamanı hatırlıyor musun..." },
+        { koordinat: [41.02807340320498, 28.98509562117013], baslik: "Galataport", aciklama: "Kocaman gemiler yüzünden sahili göremediğimiz zaman..." },
+        { koordinat: [41.03385252052638, 28.97795862560609], baslik: "İstiklal Caddesi", aciklama: "İstiklal Caddesinde gezdiğimiz zamanlar..." },
+        { koordinat: [41.06811039199013, 28.992738911412964], baslik: "Trump AVM", aciklama: "Burayı koymazsam olmaz Ramen başka nerde yedik demi..." },
+        { koordinat: [41.063297020744365, 28.992445693294023], baslik: "İstanbul Cevahir AVM", aciklama: "En gidi bir Best Burger vardı..." },
+        { koordinat: [41.044371160872686, 28.977799366378306], baslik: "Merve Pastanesi", aciklama: "En çok gittiğimiz yerlerin başındadır belki Kurtuluş Caddesi ama her seferinde geldiğimde..." },
+        { koordinat: [41.02419077294257, 28.964990211751978], baslik: "Atatürk Köprüsü", aciklama: "Anlatmaya kelimeler yetmez..." },
+        { koordinat: [41.02301910046581, 28.966791877192687], baslik: "Haliç Metrosu", aciklama: "Buraya da çok geldik..." },
+        { koordinat: [41.019249175176384, 28.969799008393515], baslik: "Eminönü", aciklama: "Eskiden az gelmiyorduk..." },
+        { koordinat: [40.99975127792402, 28.94766369175632], baslik: "Yenikapı Etkinlik Alanı", aciklama: "Burayı ve ilerideki sahile kadar yürüdüğümüz günü hatırlıyor musun..." },
+        { koordinat: [41.13944465718076, 29.03025978646202], baslik: "Atatürk Kent Ormanı", aciklama: "Buraya ne anlatsam az kalır." },
+        { koordinat: [41.15117863880416, 29.04378348136066], baslik: "Kireçburnu Sahil", aciklama: "Ramazanda gezdiğimiz günlerden..." },
+        { koordinat: [41.18177613378284, 29.07498704099925], baslik: "Rumeli Kavağı", aciklama: "Buraya gittiğimiz zaman peki..." },
+        { koordinat: [41.047286153620504, 28.89675512981831], baslik: "Forum İstanbul", aciklama: "İkea ve burayı da atlamayalım lütfen" },
+        { koordinat: [40.97765025547219, 28.787340239966706], baslik: "İBB Florya Atatürk Ormanı", aciklama: "Florya'da gezdiğimiz günlerden bir gün..." },
+        { koordinat: [40.96641800998344, 28.796182778851243], baslik: "Florya Sahil", aciklama: "Akşam sahilde oturduğumuz zaman..." },
+        { koordinat: [41.00029921702124, 28.765621090974687], baslik: "İBB Küçükçekmece Sosyal Tesisleri", aciklama: "Küçükçekmece'den başlayıp buraya yürüdüğümüz gün..." },
+        { koordinat: [41.056427029044734, 28.77105855606203], baslik: "Tema World", aciklama: "Az gitmedik çocuğumuzda götürürüz..." },
+        { koordinat: [40.97960648244668, 28.600676508202106], baslik: "Gürpınar Sahil", aciklama: "Burası kalabalık değilken çok güzel..." },
+        { koordinat: [41.01727365072121, 28.589394370404204], baslik: "Büyükçekmece Plajı", aciklama: "Akşamki kalabalığını saymazsak burası güzel tabiki seninle..." },
+        { koordinat: [41.03098409191692, 28.555590160514058], baslik: "İBB Büyükçekmece Gölü Doğal Yaşam Parkı", aciklama: "Böcekli parkın..." },
+        { koordinat: [41.01395504824513, 28.562453389759877], baslik: "Mimar Sinan Sahili", aciklama: "Sessiz, sakin ve tenha yer..." }
+    ];
+
+    yerler.forEach(yer => {
+            const marker = L.marker(yer.koordinat).addTo(harita);
+            const popupIcerigi = `
+                <div>
+                    <h4 style="margin: 5px 0 5px 0; color: #D96666;">${yer.baslik}</h4>
+                    <p style="margin: 0; font-size: 0.9em;">${yer.aciklama}</p>
+                </div>
+            `;
+            marker.bindPopup(popupIcerigi);
+        });
+        
+        haritaOlusturuldu = true;
+    }
+
+    // ✅ EN ÖNEMLİ KISIM: Harita bölümü ekrana geldiğinde haritayı oluştur ve yeniden boyutlandır
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Harita ilk kez ekrana geldiğinde
+                if (!haritaOlusturuldu) {
+                    haritayiOlustur();
+                }
+                
+                // Harita ekrana her geldiğinde boyutunu kontrol etmesi için
+                // Kısa bir gecikme ile haritanın boyutlarını yeniden hesapla
+                setTimeout(function() {
+                    if (harita) {
+                        harita.invalidateSize();
+                    }
+                }, 200); // 200 milisaniye gecikme
+
+                // Sadece bir kez çalışması yeterliyse gözlemciyi durdur
+                // observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1 // %10'u göründüğünde tetiklen
+    });
+
+    // Harita bölümünü gözlemlemeye başla
+    observer.observe(haritaBolumu);
+
+});
+// --- GELECEĞE NOT BIRAK MANTIĞI ---
+document.addEventListener('DOMContentLoaded', function() {
+    const notAlani = document.getElementById('gelecek-notu');
+    const notuKaydetBtn = document.getElementById('notu-kaydet-btn');
+    const kayitOnayi = document.getElementById('kayit-onayi');
+
+    // 1. Sayfa yüklendiğinde, kaydedilmiş not var mı diye kontrol et ve varsa yükle
+    const kaydedilmisNot = localStorage.getItem('gelecegeNot');
+    if (kaydedilmisNot) {
+        notAlani.value = kaydedilmisNot;
+    }
+
+    // 2. "Kaydet" butonuna tıklandığında...
+    notuKaydetBtn.addEventListener('click', function() {
+        const anlikNot = notAlani.value;
+
+        // Yazılan notu tarayıcının hafızasına kaydet
+        localStorage.setItem('gelecegeNot', anlikNot);
+
+        // Kullanıcıya geri bildirim ver
+        kayitOnayi.style.display = 'block';
+        // 2 saniye sonra onay mesajını gizle
+        setTimeout(function() {
+            kayitOnayi.style.display = 'none';
+        }, 2000);
     });
 });

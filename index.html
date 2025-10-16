@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
     <div id="sifre-koruma" class="sifre-koruma-aktif">
@@ -45,16 +46,41 @@
         <div class="zaman-tuneli" data-aos="fade-up">
             <h2>Bizim Unutulmaz Anılarımız</h2>
             <div class="ani-blogu" data-aos="fade-right">
-                <div class="ani-resim"><a href="images/foto1.jpg" data-lightbox="zaman-tuneli-galeri" data-title="Herşeyin başladığı nokta..."><img src="images/foto1.jpg" alt="Tanışma Anı"></a></div>
-                <div class="ani-icerik"><h3>İlk Tanışma: 10.01.2023</h3><p>İlk tanıştığımız gün... Kaderin bizi bu noktaya getireceğini hiç düşünmediğimiz gün... Ama hayatımın en güzel günü... Benim miladım... Bu tarihten önce ve sonrası var benim için.</p></div>
+                <div class="ani-resim">
+                    <a href="images/foto1.jpg" data-lightbox="zaman-tuneli-galeri" data-title="Her şeyin başladığı o yerde, bu sefer bambaşka hislerle...">
+                        <img src="images/foto1.jpg" alt="Tanışma Yeri Anısı">
+                    </a>
+                </div>
+                <div class="ani-icerik">
+                    <h3>Tanıştığımız Yerde Yeni Bir Anı</h3>
+                    <p>Hikayemizin başladığı o yere aylar sonra tekrar gittiğimizde çekilen bu fotoğraf... İlk günkü heyecanımız hala aklımda, ama bu sefer yanımda geleceğim vardı. </p>
+                </div>
             </div>
+
+            <!-- ANIBLOCK 2 - GÜNCELLENDİ -->
             <div class="ani-blogu ters" data-aos="fade-left">
-                <div class="ani-resim"><a href="images/foto2.jpg" data-lightbox="zaman-tuneli-galeri" data-title="Atatürk Kent Ormanı..."><img src="images/foto2.jpg" alt="Buluşma Anı"></a></div>
-                <div class="ani-icerik"><h3>İlk Buluşma: 16.09.2023</h3><p>İlk gün... Müthiş heyecanlı bir çift... Otobüse binip sana gelirken yolda yaşadığım heyecan... Senin evde yaşadığın o heyecan... Otogarda ilk seni görüşüm... Hayatımın en güzel günü seçebilirim o günü...</p></div>
+                <div class="ani-resim">
+                    <a href="images/foto2.jpg" data-lightbox="zaman-tuneli-galeri" data-title="Otopark maceramızdan sonraki o huzurlu an :)">
+                        <img src="images/foto2.jpg" alt="Atatürk Kent Ormanı Anısı">
+                    </a>
+                </div>
+                <div class="ani-icerik">
+                    <h3>Unutulmaz Gözleme ve Uzun Bir Yürüyüş</h3>
+                    <p>İkinci buluşmamız... Otoparktan yürüyerek çıkınca bizi çevirmeleri, sonra Atatürk Kent Ormanı'na kadar o uzun yürüyüşümüz... Ama hepsinden önemlisi, bir parkta oturup kendi ellerinle yaptığın o lezzetli gözlemeleri bana yedirmen. İşte o anı asla unutamam.</p>
+                </div>
             </div>
+
+            <!-- ANIBLOCK 3 - GÜNCELLENDİ -->
             <div class="ani-blogu" data-aos="fade-right">
-                <div class="ani-resim"><a href="images/foto6.jpg" data-lightbox="zaman-tuneli-galeri" data-title="Yılbaşı yaklaşırken..."><img src="images/foto6.jpg" alt="Kar Anısı"></a></div>
-                <div class="ani-icerik"><h3>Unutulmaz Bir Anı</h3><p>Kar yağarken birlikte kar topu savaşımız ve o karın altında geçirdiğimiz vakit... Çok güzeldi... (Bu anıya ait fotoğrafı `foto6.jpg` olarak varsaydım, sen değiştirebilirsin)</p></div>
+                <div class="ani-resim">
+                    <a href="images/foto6.jpg" data-lightbox="zaman-tuneli-galeri" data-title="Kardeşinin objektifinden biz ✨">
+                        <img src="images/foto6.jpg" alt="Yılbaşı Ağacı Anısı">
+                    </a>
+                </div>
+                <div class="ani-icerik">
+                    <h3>Yılbaşı Işıklarının Altında</h3>
+                    <p>Yılbaşına az bir zaman kala, o kocaman ve ışıl ışıl ağacın önünde durduğumuz o an... Kardeşlerinle buluşmuştuk ve tam oradan çıkarken kardeşin bu harika fotoğrafı çekmişti. O soğuk havayı ısıtan sıcacık bir anıydı.</p>
+                </div>
             </div>
             <div class="ani-blogu ters" data-aos="fade-left">
                 <div class="ani-resim"><a href="images/foto3.jpg" data-lightbox="zaman-tuneli-galeri" data-title="Biryerlere giderken yine geziyoruz..."><img src="images/foto3.jpg" alt="Anı 3"></a></div>
@@ -82,34 +108,124 @@
             </div>
         </div>
 
+        <section class="harita-bolumu" data-aos="fade-up">
+        <h2>Bizim Haritamız</h2>
+        <p>Anılarımızın izlerini taşıyan yerler...</p>
+        <div id="bizim-haritamiz"></div>
+    </section>
+
         <footer data-aos="fade-up">
             <h2>Sana Özel</h2>
             <h3>Seni Sevmemin Bazı Nedenleri:</h3>
             <ol class="sevgi-listesi">
-                <li>Çünkü en kötü günümde bile gülümsememi sağlıyorsun.</li>
-                <li>Çünkü yanındayken kendim gibi olabiliyorum.</li>
+                <li>En kötü günümde bile gülümsememi sağlıyorsun.</li>
+                <li>Yanındayken kendim gibi olabiliyorum.</li>
                 <li>O güzel gözlerinle her baktığında kalbimi eritiyorsun.</li>
                 <li>Bana her zaman destek oluyor ve hayallerime inanıyorsun.</li>
                 <li>Birlikteyken zamanın nasıl geçtiğini anlamıyorum.</li>
                 <li>Sadece varlığın bile dünyamı daha güzel bir yer yapıyor.</li>
+                <li>Seninle paylaştığım her an, hayatımın en değerli anı oluyor.</li>
+                <li>Seninle geleceği hayal etmek bile heyecan verici.</li>
+                <li>Her gün sana olan sevgim daha da büyüyor.</li>
+                <li>Seninle olmak, hayatımın en büyük şansı.</li>
             </ol>
             <div class="ozel-bolum" data-aos="fade-up">
                 <h3>Sana Özel Bir Söz ❤️</h3>
                 <div id="soz-kutusu" class="soz-kutusu">
-                    <p id="gunun-sozu">Yeni bir söz için tıkla...</p>
-                </div>
+    <p id="gunun-sozu"></p><span class="imlec"></span>
+</div>
             </div>
+
+            
         </footer>
+
+<!-- YENİ BÖLÜM: İLİŞKİ TESTİ -->
+        <section class="test-bolumu" data-aos="fade-up">
+        <div class="ozel-bolum">
+            <h3>Beni Ne Kadar Tanıyorsun? 😉</h3>
+            <div id="iliski-testi">
+                <!-- Soru 1 -->
+                <div class="soru">
+                    <p><strong>1.</strong> En sevdiğim renk nedir?</p>
+                    <input type="text" placeholder="Cevabını buraya yaz...">
+                </div>
+                <!-- Soru 2 -->
+                <div class="soru">
+                    <p><strong>2.</strong> Birlikte izlediğimiz ilk film hangisiydi?</p>
+                    <input type="text" placeholder="Cevabını buraya yaz...">
+                </div>
+                <!-- Soru 3 -->
+                <div class="soru">
+                    <p><strong>3.</strong> Bana aldığın ilk hediye neydi?</p>
+                    <input type="text" placeholder="Cevabını buraya yaz...">
+                </div>
+                <!-- Soru 4 -->
+                <div class="soru">
+                    <p><strong>4.</strong> Seninle yapmayı en çok sevdiğim aktivite nedir?</p>
+                    <input type="text" placeholder="Cevabını buraya yaz...">
+                </div>
+                <!-- Soru 5 -->
+                <div class="soru">      
+                    <p><strong>5.</strong> İlk el ele tutuştuğumuz yer neresiydi?</p>
+                    <input type="text" placeholder="Cevabını buraya yaz...">
+                </div>
+                <!-- Soru 6 -->
+                <div class="soru">
+                    <p><strong>6.</strong> En sevdiğim içecek nedir?</p>
+                    <input type="text" placeholder="Cevabını buraya yaz...">
+                </div>
+                <!-- Soru 7 -->
+                <div class="soru">
+                    <p><strong>7.</strong> En sevdiğim mevsim hangisidir?</p>
+                    <input type="text" placeholder="Cevabını buraya yaz...">
+                </div>
+                <!-- Soru 8 -->
+                <div class="soru">
+                    <p><strong>8.</strong> İlk buluşmamızda nerede, ne içmiştik?</p>
+                    <input type="text" placeholder="Cevabını buraya yaz...">    
+                </div>
+                <!-- Soru 9 -->
+                <div class="soru">
+                    <p><strong>9.</strong> Eğer bir müzik aleti çalabilseydim, bu ne olurdu?</p>
+                    <input type="text" placeholder="Cevabını buraya yaz...">        
+                </div>
+                <!-- Soru 10 -->    
+                <div class="soru">
+                    <p><strong>10.</strong> Emekli olduğumuzda nerede yaşamak istiyorum?</p>
+                    <input type="text" placeholder="Cevabını buraya yaz...">
+                </div>
+
+                <button id="testi-bitir-btn">Sonuçları Göster!</button>
+                <p id="test-sonucu" style="display: none;"></p>
+            </div>
+        </div>
+            </section>
+
+
+        <!-- YENİ BÖLÜM 1: GELECEK HAYALLERİ -->
         
         <section class="gelecek-bolumu" data-aos="fade-up">
             <h2>Ortak Hayallerimiz</h2>
             <ul class="hayal-listesi">
-                <li>✨ Birlikte İtalya'yı gezmek</li>
-                <li>🐶 Bir köpek sahiplenmek</li>
-                <li>🌌 Kuzey Işıkları'nı izlemek</li>
                 <li>🏡 Kendi evimizin bahçesinde kahve içmek</li>
+                <li>🚂 Doğu Ekspresi ile masalsı bir kış yolculuğu yapmak.</li>
+                <li>🏡 İkimizin zevkine göre döşediğimiz o küçük, şirin evimizde uyanmak.</li>
+                <li>👨‍👩‍👧‍👦 Bir gün kendi küçük ailemizi kurmak.</li>
+                <li>💖 Yaşlandığımızda, sallanan sandalyelerde oturup torunlarımıza hikayemizi anlatmak.</li>
+                <li>🌍 Dünyanın dört bir yanını birlikte keşfetmek.</li>
+                <li>🌟 Her ne olursa olsun, birbirimizin en büyük hayallerini gerçekleştirmesine destek olmak.</li>
             </ul>
         </section>
+
+         <section class="gelecek-bolumu" data-aos="fade-up">
+        <div class="ozel-bolum">
+            <h3>Geleceğe Bir Not Bırak 💌</h3>
+            <p style="font-size: 0.9em; margin-top: -10px;"><em>(Bu not sadece bu tarayıcıda saklanacaktır)</em></p>
+            <textarea id="gelecek-notu" placeholder="Şu anki hislerini, bir hayalini veya gelecekteki bize bir mesajını yaz..."></textarea>
+            <button id="notu-kaydet-btn">Notu Kaydet</button>
+            <p id="kayit-onayi" style="display: none; color: #4CAF50; margin-top: 10px;">Notun kaydedildi!</p>
+        </div>
+    </section>
 
         <!-- YENİ BÖLÜM 2: GERİ SAYIM -->
         <section class="geri-sayim-bolumu" data-aos="fade-up">
@@ -129,7 +245,7 @@
         </section>
 
         <div class="imza-container" data-aos="fade-up">
-            <p class="imza">Sonsuz sevgiyle, <br> Seni çok seven Uğur</p>
+            <p class="imza">Sonsuz sevgiyle, <br> Seni çok seven sevgilin Uğur</p>
         </div>
         
         <div id="modal-overlay">
@@ -143,7 +259,8 @@
         <audio id="bizimSarkimiz" loop>
             <source src="audio/Still With You.mp3" type="audio/mpeg">
         </audio>
-
+        
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

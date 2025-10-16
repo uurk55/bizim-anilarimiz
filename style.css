@@ -240,15 +240,14 @@ img {
 }
 /* --- Geri Sayım Sayacı Stilleri --- */
 .geri-sayim-container {
-    margin-top: 40px;
-    margin-bottom: 20px;
-    padding-top: 20px;
-    
+    margin-top: 0; /* Üst boşluğu sıfırla */
+    margin-bottom: 0; /* Alt boşluğu da şimdilik sıfırla */
+    padding-top: 0; /* İç boşluğu sıfırla */
 }
 
 .geri-sayim-container h3 {
-    margin: 0 0 20px 0 !important; /* Üst:0, Sağ:0, Alt:20px, Sol:0 */
-    padding-top: 10px; /* Başlığa içten biraz boşluk verelim ki kenara yapışmasın */
+    margin: 0 0 25px 0; /* ÜST BOŞLUK SIFIR, sadece altta 25px boşluk var */
+    padding: 0; /* Tüm iç boşlukları sıfırla */
     color: #4B3832;
     font-size: 1.2em;
 }
@@ -651,4 +650,149 @@ img {
  .hayal-listesi li:hover {
     color: #D96666; /* ✅ Üzerine gelince ana kırmızı rengimiz olsun */
     cursor: pointer; /* Üzerine gelince el işareti çıksın */
+}
+/* --- İlişki Testi Stilleri (GÜNCELLENMİŞ) --- */
+
+#iliski-testi {
+    /* Testin genel konteynerini ortalamak için ek ayarlar */
+    max-width: 500px; /* Testin maksimum genişliğini belirle */
+    margin: 0 auto;   /* Konteyneri kendi ana kutusu içinde ortala */
+}
+
+#iliski-testi .soru {
+    text-align: left;
+    margin-bottom: 25px; /* Sorular arasına biraz daha boşluk */
+}
+
+#iliski-testi .soru p {
+    margin-bottom: 8px;
+    padding-left: 5px; /* Sorunun soldan hafifçe içeride başlaması için */
+}
+
+#iliski-testi input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Daha modern bir yuvarlaklık */
+    box-sizing: border-box;
+    font-family: 'Georgia', serif;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+#iliski-testi input[type="text"]:focus {
+    border-color: #D96666; /* Odaklandığında çerçeve rengi değişsin */
+    outline: none;
+}
+
+#testi-bitir-btn {
+    background-color: #D96666;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1em;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+#testi-bitir-btn:hover {
+    background-color: #c45a5a;
+}
+
+#test-sonucu {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+}
+/* --- Bizim Haritamız Bölümü Stilleri --- */
+.harita-bolumu {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+#bizim-haritamiz {
+    height: 450px; /* Haritanın yüksekliği */
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+/* --- Leaflet Harita Düzeltmesi --- */
+.leaflet-container {
+    background: #f0f0f0; /* Gri kutucukların arkasında bir arka plan rengi */
+}
+/* --- Geleceğe Not Bırak Stilleri --- */
+#gelecek-notu {
+    width: 100%;
+    height: 120px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-family: 'Georgia', serif;
+    font-size: 1em;
+    line-height: 1.6;
+    margin-top: 10px;
+    resize: vertical; /* Sadece dikeyde boyutlandırılabilir olsun */
+}
+
+#notu-kaydet-btn {
+    background-color: #A68080;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1em;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+}
+
+#notu-kaydet-btn:hover {
+    background-color: #8c6a6a;
+}
+/* --- Yazı Efekti İmleç Stili --- */
+.soz-kutusu p {
+    display: inline-block; /* İmlecin doğru konumlanması için */
+}
+
+/* Yanıp sönen imleç efekti */
+.imlec {
+    display: inline-block;
+    width: 2px;
+    height: 1.2em; /* Yazı boyutuyla orantılı */
+    background-color: #4B3832;
+    margin-left: 5px;
+    animation: yanipSonme 1s infinite;
+}
+
+@keyframes yanipSonme {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+/* --- Test Bölümü Kart Stili --- */
+.test-bolumu {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+/* Test bölümünün içindeki .ozel-bolum'un üst çizgisini ve boşluğunu kaldıralım */
+.test-bolumu .ozel-bolum {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
 }
