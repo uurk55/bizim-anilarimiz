@@ -154,11 +154,19 @@ img {
         padding: 10px; /* Sayfanın genel kenar boşluklarını azaltarak içeriğe yer açarız */
     }
 
-    header, main, section, footer {
-        margin: 20px auto; /* Bölümler arasındaki dikey boşluğu biraz azaltırız */
-        padding: 15px; /* Bölümlerin iç boşluklarını daraltırız */
-        box-shadow: none; /* Telefonda daha sade bir görünüm için gölgeyi kaldırırız */
-        border-radius: 0; /* Kenar yuvarlaklığını kaldırıp tam ekran hissi veririz */
+    header,
+    footer,
+    .zaman-tuneli,
+    .harita-bolumu,
+    .test-bolumu,
+    .gelecek-bolumu,
+    .geri-sayim-bolumu {
+        width: 100%;           /* Ekranın tamamını kapla */
+        margin: 20px 0;        /* Sadece üst ve alt boşluk bırak, yanları sıfırla */
+        padding: 20px 15px;    /* İç boşlukları ayarla (üst/alt 20px, yanlar 15px) */
+        border-radius: 0;      /* Kenar yuvarlaklığını kaldır */
+        box-shadow: none;      /* Gölgeyi kaldır */
+        box-sizing: border-box;/* Padding'in genişliği etkilememesini sağlar */
     }
 
     h1 {
