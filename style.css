@@ -186,8 +186,7 @@ img {
     .sevgi-listesi {
         text-align: left;
     }
-}
-/* --- MOBİL İÇİN GERİ SAYIM DÜZENLEMESİ --- */
+ /* --- MOBİL İÇİN GERİ SAYIM DÜZENLEMESİ --- */
     .geri-sayim {
         display: grid; /* Flex yerine Grid kullanalım */
         grid-template-columns: 1fr 1fr; /* 2 eşit sütun oluştur */
@@ -208,6 +207,8 @@ img {
         height: 50px;
         font-size: 20px;
     }
+}
+
 /* --- Galeri Stilleri --- */
 .galeri-section a {
     display: inline-block;
