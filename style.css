@@ -61,6 +61,12 @@ img {
     padding-left: 40px; /* Kalp ikonu için solda yer açıyoruz */
     border-radius: 5px;
     position: relative; /* :before elemanını konumlandırmak için gerekli */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* ✅ HAREKET VE GÖLGE ANİMASYONU */
+}
+.sevgi-listesi li:hover {
+    transform: translateY(-5px); /* ✅ Üzerine gelince 5px yukarı kaysın */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08); /* ✅ Gölgéti biraz daha belirgin yapalım */
+    cursor: pointer;
 }
 /* Her liste elemanının başına kalp ikonu ekliyoruz */
 .sevgi-listesi li::before {
@@ -640,4 +646,9 @@ img {
      padding: 8px 0;
      font-size: 1.2em;
      color: #4B3832;
+     transition: color 0.3s ease; /* ✅ RENK GEÇİŞ ANİMASYONU */
  }
+ .hayal-listesi li:hover {
+    color: #D96666; /* ✅ Üzerine gelince ana kırmızı rengimiz olsun */
+    cursor: pointer; /* Üzerine gelince el işareti çıksın */
+}
