@@ -187,6 +187,27 @@ img {
         text-align: left;
     }
 }
+/* --- MOBİL İÇİN GERİ SAYIM DÜZENLEMESİ --- */
+    .geri-sayim {
+        display: grid; /* Flex yerine Grid kullanalım */
+        grid-template-columns: 1fr 1fr; /* 2 eşit sütun oluştur */
+        gap: 15px; /* Kutular arasına boşluk */
+    }
+    .geri-sayim div {
+        min-width: auto; /* Sabit minimum genişliği kaldır */
+        padding: 15px 10px;
+    }
+    .geri-sayim span {
+        font-size: 2em; /* Yazı boyutunu biraz küçültelim */
+    }
+    /* --- MOBİL İÇİN MÜZİK BUTONU KONUM DÜZELTMESİ --- */
+    #muzikButonu {
+        right: 15px; /* Sağdaki boşluğu sayfanın genel padding'i ile uyumlu hale getir */
+        bottom: 15px;
+        width: 50px; /* Mobilde biraz daha küçük ve zarif olsun */
+        height: 50px;
+        font-size: 20px;
+    }
 /* --- Galeri Stilleri --- */
 .galeri-section a {
     display: inline-block;
