@@ -146,14 +146,14 @@ img {
 #modal-overlay.active {
     display: flex; /* Gizli olan modal'ı görünür yapar */
 }
-/* --- MOBİL UYUMLULUK (DUYARLILIK) KODLARI --- */
-/* Bu kodlar sadece ekran genişliği 600px veya daha az olduğunda çalışır */
-@media (max-width: 600px) {
+/* --- MOBİL UYUMLULUK (DUYARLILIK) KODLARI (FİNAL)--- */
+@media (max-width: 768px) { /* Genişliği biraz artırarak tabletleri de daha iyi kapsayalım */
 
     body {
-        padding: 10px; /* Sayfanın genel kenar boşluklarını azaltarak içeriğe yer açarız */
+        padding: 0; /* Mobilde body'nin kendi boşluğunu sıfırlayalım */
     }
 
+    /* Bütün ana kartlar için ortak mobil stil */
     header,
     footer,
     .zaman-tuneli,
@@ -161,49 +161,74 @@ img {
     .test-bolumu,
     .gelecek-bolumu,
     .geri-sayim-bolumu {
-        width: 100%;           /* Ekranın tamamını kapla */
-        margin: 20px 0;        /* Sadece üst ve alt boşluk bırak, yanları sıfırla */
-        padding: 20px 15px;    /* İç boşlukları ayarla (üst/alt 20px, yanlar 15px) */
-        border-radius: 0;      /* Kenar yuvarlaklığını kaldır */
-        box-shadow: none;      /* Gölgeyi kaldır */
-        box-sizing: border-box;/* Padding'in genişliği etkilememesini sağlar */
+        width: 100%;
+        margin: 15px 0; /* Üst/alt boşluğu azalt */
+        padding: 25px 20px; /* İç boşlukları ayarla */
+        border-radius: 0;
+        box-shadow: none;
+        box-sizing: border-box;
     }
 
     h1 {
-        font-size: 2em; /* "Canım Sevgilim" başlığını telefona sığacak şekilde biraz küçültürüz */
+        font-size: 2em;
     }
 
     p {
-        font-size: 1em; /* Paragraf yazı boyutunu mobil için standart hale getiririz */
+        font-size: 1em;
     }
 
     #surprizButonu {
-        padding: 12px 24px; /* Butonun boyutunu biraz küçülterek daha zarif durmasını sağlarız */
+        padding: 12px 24px;
         font-size: 0.9em;
     }
 
-    /* "Seni Sevmemin Nedenleri" listesindeki maddelerin sola yapışık durması için */
+    /* Zaman tüneli mobil düzenlemesi */
+    .ani-blogu, 
+    .ani-blogu.ters {
+        flex-direction: column;
+        text-align: center;
+        padding: 0;
+        gap: 20px;
+    }
+    .ani-icerik {
+        text-align: center;
+        order: 2;
+        padding: 0;
+    }
+    .ani-blogu.ters .ani-icerik {
+        text-align: center;
+        padding: 0;
+    }
+    .ani-resim {
+        min-width: auto;
+        width: 100%;
+        order: 1;
+    }
+
+    /* "Seni Sevmemin Nedenleri" listesi */
     .sevgi-listesi {
         text-align: left;
     }
- /* --- MOBİL İÇİN GERİ SAYIM DÜZENLEMESİ --- */
+
+    /* Geri sayım sayacı mobil düzenlemesi */
     .geri-sayim {
-        display: grid; /* Flex yerine Grid kullanalım */
-        grid-template-columns: 1fr 1fr; /* 2 eşit sütun oluştur */
-        gap: 15px; /* Kutular arasına boşluk */
+        display: grid !important; /* SADECE BU KELİMEYİ EKLE */
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
     }
     .geri-sayim div {
-        min-width: auto; /* Sabit minimum genişliği kaldır */
+        min-width: auto;
         padding: 15px 10px;
     }
     .geri-sayim span {
-        font-size: 2em; /* Yazı boyutunu biraz küçültelim */
+        font-size: 2.2em;
     }
-    /* --- MOBİL İÇİN MÜZİK BUTONU KONUM DÜZELTMESİ --- */
+    
+    /* Müzik butonu mobil düzenlemesi */
     #muzikButonu {
-        right: 15px; /* Sağdaki boşluğu sayfanın genel padding'i ile uyumlu hale getir */
-        bottom: 15px;
-        width: 50px; /* Mobilde biraz daha küçük ve zarif olsun */
+        right: 20px;
+        bottom: 20px;
+        width: 50px;
         height: 50px;
         font-size: 20px;
     }
